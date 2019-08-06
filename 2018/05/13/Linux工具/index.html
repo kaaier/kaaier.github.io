@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kaiaier's    Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Linux工具 Linux下还是有很多超棒的开发工具的。  在Linux日常使用中，最常用的命令自然是sudo, ls, cp, mv, cat等，但作为后台开发者，上述命令远远不够。从我的理解来看，合格的C/C++开发者至少需要从开发及调试工具、文件处理、性能分析、网络工具四个方面针对性使用一些开发工具。这里我罗列了一些，大部分都是开发中经常需要使用的命令，有些功能比较简单的命令我会给出一些基本">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux相关总结">
+<meta property="og:url" content="https://kaaier.github.io/2018/05/13/Linux工具/index.html">
+<meta property="og:site_name" content="Kaiaier&#39;s    Blog">
+<meta property="og:description" content="Linux工具 Linux下还是有很多超棒的开发工具的。  在Linux日常使用中，最常用的命令自然是sudo, ls, cp, mv, cat等，但作为后台开发者，上述命令远远不够。从我的理解来看，合格的C/C++开发者至少需要从开发及调试工具、文件处理、性能分析、网络工具四个方面针对性使用一些开发工具。这里我罗列了一些，大部分都是开发中经常需要使用的命令，有些功能比较简单的命令我会给出一些基本">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-06T16:16:21.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux相关总结">
+<meta name="twitter:description" content="Linux工具 Linux下还是有很多超棒的开发工具的。  在Linux日常使用中，最常用的命令自然是sudo, ls, cp, mv, cat等，但作为后台开发者，上述命令远远不够。从我的理解来看，合格的C/C++开发者至少需要从开发及调试工具、文件处理、性能分析、网络工具四个方面针对性使用一些开发工具。这里我罗列了一些，大部分都是开发中经常需要使用的命令，有些功能比较简单的命令我会给出一些基本">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://kaaier.github.io/2018/05/13/Linux工具/">
+
+
+
+
+
+  <title>Linux相关总结 | Kaiaier's    Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kaiaier's    Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-summary">
+          <a href="/Summary/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Summary
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/Resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kaaier.github.io/2018/05/13/Linux工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张旭">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/graduate.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kaiaier's    Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux相关总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T12:11:21+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux工具"><a href="#Linux工具" class="headerlink" title="Linux工具"></a><a href="http://man.linuxde.net/par/2" target="_blank" rel="noopener">Linux工具</a></h1><blockquote>
+<p>Linux下还是有很多超棒的开发工具的。</p>
+</blockquote>
+<p>在Linux日常使用中，最常用的命令自然是sudo, ls, cp, mv, cat等，但作为后台开发者，上述命令远远不够。从我的理解来看，合格的C/C++开发者至少需要从开发及调试工具、文件处理、性能分析、网络工具四个方面针对性使用一些开发工具。这里我罗列了一些，大部分都是开发中经常需要使用的命令，有些功能比较简单的命令我会给出一些基本用法，有些本身自带体系（比如vim, gdb等）的命令只能附上链接了。</p>
+<p>开发及调试工具介绍了从“编辑 -&gt; 编译 -&gt; 分析目标文件 -&gt; 追踪调用过程”的全套命令，文件处理部分介绍了查找、统计、替换等基本文本操作命令，性能分析介绍了查看进程信息、CPU负载、I/O负载、内存使用情况等基本命令，网络工具介绍了可以查看“链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层”信息的工具。除此以外，其他命令中也列出了开发者经常会用到的一些命令，基本可以满足日常开发需要。</p>
+<hr>
+  <a id="more"></a>
+
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><table>
+<thead>
+<tr>
+<th align="center">Chapter 1</th>
+<th align="center">Chapter 2</th>
+<th align="center">Chapter 3</th>
+<th align="center">Chapter 4</th>
+<th align="center">Chapter 5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a href="#pro">开发及调试</a></td>
+<td align="center"><a href="#file">文件处理</a></td>
+<td align="center"><a href="#sysinfo">性能分析</a></td>
+<td align="center"><a href="#net">网络工具</a></td>
+<td align="center"><a href="#other">其他</a></td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>开发及调试</p>
+<ul>
+<li>编辑器：vim</li>
+<li>编译器：gcc/g++</li>
+<li>调试工具：gdb</li>
+<li>查看依赖库：ldd</li>
+<li>二进制文件分析：objdump</li>
+<li>ELF文件格式分析：readelf</li>
+<li>跟踪进程中系统调用：strace</li>
+<li>跟踪进程栈：pstack</li>
+<li>进程内存映射：pmap</li>
+</ul>
+</li>
+<li><p>文件处理</p>
+<ul>
+<li>文件查找：find</li>
+<li>文本搜索：grep</li>
+<li>排序：sort</li>
+<li>转换：tr</li>
+<li>按列切分文本：cut</li>
+<li>按列拼接文本：paste</li>
+<li>统计行和字符：wc</li>
+<li>文本替换：sed</li>
+<li>数据流处理：awk</li>
+</ul>
+</li>
+<li><p>性能分析</p>
+<ul>
+<li>进程查询：ps</li>
+<li>进程监控：top</li>
+<li>打开文件查询：lsof</li>
+<li>内存使用量：free</li>
+<li>监控性能指标：sar</li>
+</ul>
+</li>
+<li><p>网络工具</p>
+<ul>
+<li>网卡配置：ifconfig </li>
+<li>查看当前网络连接：netstat</li>
+<li>查看路由表：route</li>
+<li>检查网络连通性：ping</li>
+<li>转发路径：traceroute</li>
+<li>网络Debug分析：nc</li>
+<li>命令行抓包：tcpdump</li>
+<li>域名解析工具：dig</li>
+<li>网络请求：curl</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>终止进程：kill</li>
+<li>修改文件权限：chmod</li>
+<li>创建链接：ln</li>
+<li>显示文件尾：tail</li>
+<li>版本控制：git</li>
+<li>设置别名：alias</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h3 id="开发及调试"><a href="#开发及调试" class="headerlink" title="开发及调试"></a><span id="pro">开发及调试</span></h3><blockquote>
+<p>开发工具大部分都提供了完善的功能，所以这里不一一列举用法。从技术层面来说，调试工具比开发工具更考验一个人的工程能力。</p>
+</blockquote>
+<ol>
+<li><p>编辑器：vim</p>
+<ul>
+<li>服务器端开发必知必会，功能强大，这里不一一列举，但基本的打开文件、保存退出要会。</li>
+<li><a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>编译器：gcc/g++</p>
+<ul>
+<li>C/C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程。</li>
+<li><a href="http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>调试工具：gdb</p>
+<ul>
+<li>服务器端调试必备。</li>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>查看依赖库：ldd</p>
+<ul>
+<li>程序依赖库查询<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ldd后接可执行文件</span><br><span class="line"><span class="meta">#</span> 第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址</span><br><span class="line"><span class="meta">#</span> 前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置</span><br><span class="line"></span><br><span class="line">ldd a.out</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>二进制文件分析：objdump</p>
+<ul>
+<li>反汇编，需要理解汇编语言</li>
+<li><a href="http://man.linuxde.net/objdump" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>ELF文件格式分析：readelf</p>
+<ul>
+<li>可以得到ELF文件各段内容，分析链接、符号表等需要用到</li>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/readelf.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>跟踪进程中系统调用：strace</p>
+<ul>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>跟踪进程栈：pstack</p>
+<ul>
+<li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>进程内存映射：pmap</p>
+<ul>
+<li>显示进程内存映射<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -x显示扩展信息，后接进程pid</span><br><span class="line"><span class="meta">#</span> Address: 内存开始地址</span><br><span class="line"><span class="meta">#</span> 显示信息：</span><br><span class="line">    Kbytes: 占用内存的字节数</span><br><span class="line">    RSS: 保留内存的字节数</span><br><span class="line">    Dirty: 脏页的字节数（包括共享和私有的）</span><br><span class="line">    Mode: 内存的权限：read、write、execute、shared、private</span><br><span class="line">    Mapping: 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）</span><br><span class="line">    Device: 设备名 (major:minor)</span><br><span class="line"></span><br><span class="line">pmap -x 12345</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a><span id="file">文件处理</span></h3><blockquote>
+<p>Everything is file. 在Linux环境下，对文本处理相当频繁，所以有些命令的参数还是需要记忆的。另外其他很多命令的输出信息都需要通过文件处理命令来筛选有用信息。</p>
+</blockquote>
+<ol>
+<li><p>文件查找：find</p>
+<p> 按名查找：</p>
+<ul>
+<li><p>查找具体文件（一般方式）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name *.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找具体文件（正则方式）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -regex为正则查找，-iregex为忽略大小写的正则查找 </span><br><span class="line"></span><br><span class="line">find -regex ".*.cpp$"</span><br></pre></td></tr></table></figure>
+
+<p>定制查找：</p>
+</li>
+<li><p>按类型查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> f(file)为文件，d(dictionary)为目录，l(link)为链接</span><br><span class="line"></span><br><span class="line">find . -type f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按时间查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> atime为访问时间，x天内加参数"-atime -x"，超过x天加"-atime -x"</span><br><span class="line"><span class="meta">#</span> mtime为修改时间</span><br><span class="line"></span><br><span class="line">find . -type f -atime -7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按大小查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -size后接文件大小，单位可以为k(kb)，m(MB)，g(GB)</span><br><span class="line"></span><br><span class="line">find . -type f -size -1k</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按权限查询</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -perm后接权限</span><br><span class="line"></span><br><span class="line">find . -type -perm 644</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>文本搜索：grep</p>
+<ul>
+<li><p>模式匹配</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 匹配test.cpp文件中含有"iostream"串的内容</span><br><span class="line"></span><br><span class="line">grep "iostream" test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多个模式匹配</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 匹配test.cpp文件中含有"iostream"和"using"串的内容</span><br><span class="line"></span><br><span class="line">grep -e "using" -e "iostream" test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -n为打印匹配的行号；-i搜索时忽略大小写；-c统计包含文本次数</span><br><span class="line"></span><br><span class="line">grep -n "iostream" test.cpp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>排序：sort</p>
+<ul>
+<li>文件内容行排序<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 排序在内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> -n(number)表示按数字排序，-d(dictionary)表示按字典序</span><br><span class="line"><span class="meta">#</span> -k N表示按各行第N列进行排序</span><br><span class="line"><span class="meta">#</span> -r(reverse)为逆序排序</span><br><span class="line"></span><br><span class="line">sort -n -k 1 test</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>转换：tr</p>
+<ul>
+<li><p>字符替换</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 转换在内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> 将打开文件中所有目标字符替换</span><br><span class="line"></span><br><span class="line">cat test | tr '1' '2'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符删除</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 转换在内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> -d删除(delete)</span><br><span class="line"></span><br><span class="line">cat test | tr -d '1'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符压缩</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 转换在内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> -s位于后部</span><br><span class="line"></span><br><span class="line">cat test | tr ' ' -s</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>按列切分文本：cut</p>
+<ul>
+<li><p>截取特定列</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 截取的内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> -b(byte)以字节为单位，-c(character)以字符为单位，-f以字段为单位</span><br><span class="line"><span class="meta">#</span> 数字为具体列范围</span><br><span class="line"></span><br><span class="line">cut -f 1,2 test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定界定符</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 截取的内存进行，不改变文件</span><br><span class="line"><span class="meta">#</span> -d后接界定符</span><br><span class="line"></span><br><span class="line">cut -f 2 -d ',' new</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>按列拼接文本：paste</p>
+<ul>
+<li><p>按列拼接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 在内存中拼接，不改变文件</span><br><span class="line"><span class="meta">#</span> 将两个文件按对应列拼接</span><br><span class="line"><span class="meta">#</span> 最后加上-d "x"会将x作为指定分隔符（paste test1 test2 -d ","）</span><br><span class="line"><span class="meta">#</span> 两文件列数可以不同 </span><br><span class="line"></span><br><span class="line">paste test1 test2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定界定符拼接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 在内存中拼接，不改变文件</span><br><span class="line"><span class="meta">#</span> 按照-d之后给出的界定符拼接</span><br><span class="line"></span><br><span class="line">paste test1 test2 -d ","</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>统计行和字符：wc</p>
+<ul>
+<li>基本统计<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -l统计行数(line)，-w统计单词数(word)，-c统计字符数(character)</span><br><span class="line"></span><br><span class="line">wc -l test</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>文本替换：sed</p>
+<ul>
+<li>区别于上面的命令，sed是可以直接改变被编辑文件内容的。</li>
+<li><a href="http://coolshell.cn/articles/9104.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>数据流处理：awk</p>
+<ul>
+<li>区别于上面的命令，awk是可以直接改变被编辑文件内容的。</li>
+<li><a href="http://coolshell.cn/articles/9070.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a><span id="sysinfo">系统信息</span></h3><blockquote>
+<p>性能监视工具对于程序员的作用就像是听诊器对于医生的作用一样。系统信息主要针对于服务器性能较低时的排查工作，主要包括CPU信息，文件I/O和内存使用情况，通过进程为纽带得到系统运行的瓶颈。</p>
+</blockquote>
+<ol>
+<li><p>进程查询：ps</p>
+<ul>
+<li><p>查看正在运行进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 常结合grep筛选信息(e.g, ps -ef | grep xxx)</span><br><span class="line"></span><br><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以完整格式显示所有进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 常结合grep筛选信息</span><br><span class="line"></span><br><span class="line">ps -ajx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>进程监控：top</p>
+<ul>
+<li>显示实时进程信息<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 这是个大招，都不带参数的，具体信息通过grep筛选</span><br><span class="line"><span class="meta">#</span> 交互模式下键入M进程列表按内存使用大小降序排列，键入P进程列表按CPU使用大小降序排列</span><br><span class="line"><span class="meta">#</span> %id表示CPU空闲率，过低表示可能存在CPU存在瓶颈</span><br><span class="line"><span class="meta">#</span> %wa表示等待I/O的CPU时间百分比，过高则I/O存在瓶颈 &gt; 用iostat进一步分析</span><br><span class="line"></span><br><span class="line">top</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>打开文件查询：lsof</p>
+<ul>
+<li><p>查看占用某端口的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 最常见的就是mysql端口被占用使用(lsof i:3307)</span><br><span class="line"><span class="meta">#</span> 周知端口(ftp:20/21, ssh:22, telnet:23, smtp:25, dns:53, http:80, pop3:110, https:443)</span><br><span class="line"></span><br><span class="line">lsof -i:53</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查看某用户打开的文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -u(user)为用户，后接用户名</span><br><span class="line"></span><br><span class="line">lsof -u inx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定进程打开的文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -p(process)为进程，后接进程PID</span><br><span class="line"></span><br><span class="line">lsof -p 12345</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定目录下被进程打开的文件 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 这里是"+d"，需要注意，使用"+D"递归目录</span><br><span class="line"></span><br><span class="line">lsof +d /test</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内存使用量：free</p>
+<ul>
+<li>内存使用量<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可获得内存及交换区的总量，已使用量，空闲量等信息</span><br><span class="line"></span><br><span class="line">free</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>监控性能指标：sar</p>
+<p> 监控CPU</p>
+<ul>
+<li><p>监控CPU负载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 加上-q可以查看运行队列中进程数，系统上进程大小，平均负载等</span><br><span class="line"><span class="meta">#</span> 这里"1"表示采样时间间隔是1秒，这里"2"表示采样次数为2</span><br><span class="line"></span><br><span class="line">sar -q 1 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>监控CPU使用率</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以显示CPU使用情况</span><br><span class="line"><span class="meta">#</span> 参数意义同上</span><br><span class="line"></span><br><span class="line">sar -u 1 2</span><br></pre></td></tr></table></figure>
+
+<p>监控内存</p>
+</li>
+<li><p>查询内存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以显示内存使用情况</span><br><span class="line"><span class="meta">#</span> 参数意义同上 </span><br><span class="line"></span><br><span class="line">sar -r 1 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面交换查询</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> #</span> 可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br><span class="line"><span class="meta"> #</span> 参数意义同上</span><br><span class="line"></span><br><span class="line">sar -W 1 2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="网络工具"><a href="#网络工具" class="headerlink" title="网络工具"></a><span id="net">网络工具</span></h3><blockquote>
+<p>网络工具部分只介绍基本功能，参数部分一笔带过。这部分重点不在于工具的使用而是对反馈的数据进行解读，并且这部分命令功能的重合度还是比较高的。</p>
+</blockquote>
+<ol>
+<li><p>网卡配置（链路层）：ifconfig </p>
+<ul>
+<li><p>显示设备信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以显示已激活的网络设备信息</span><br><span class="line"></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动关闭指定网卡</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前一个参数为具体网卡，后一个为开关信息</span><br><span class="line"><span class="meta">#</span> up为打开，down为关闭</span><br><span class="line"></span><br><span class="line">ifconfig eth0 up</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置IP地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前一个参数为具体网卡，后一个为配置的IP地址</span><br><span class="line"></span><br><span class="line">ifconfig eth0 192.168.1.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置最大传输单元</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">前一个参数为具体网卡，后面为MTU的大小</span><br><span class="line"><span class="meta">#</span> 设置链路层MTU值，通常为1500</span><br><span class="line"></span><br><span class="line">ifconfig eth0 mtu 1500</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用和关闭ARP协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 开启arp如下，若关闭则-arp</span><br><span class="line"></span><br><span class="line">ifconfig eth0 arp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>查看当前网络连接（链路层/网络层/传输层）：netstat</p>
+<ul>
+<li><p>网络接口信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 显示网卡信息，可结合ifconfig学习</span><br><span class="line"></span><br><span class="line">netstat -i</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -a(all)表示所有端口，-t(tcp)表示所有使用中的TCP端口</span><br><span class="line"><span class="meta">#</span> -l(listening)表示正在监听的端口</span><br><span class="line"></span><br><span class="line">netstat -at</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示端口统计信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -s(status)显示各协议信息</span><br><span class="line"><span class="meta">#</span> -加上-t(tcp)显示tcp协议信息，加上-u(udp)显示udp协议信息</span><br><span class="line"></span><br><span class="line">netstat -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示使用某协议的应用名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -p(progress)表示程序，可以显示使用tcp/udp协议的应用的名称</span><br><span class="line"></span><br><span class="line">netstat -pt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找指定进程、端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 互逆操作第一个显示某程序使用的端口号，第二个显示某端口号的使用进程</span><br><span class="line"><span class="meta">#</span> 第二个操作可以用lsof替代</span><br><span class="line"></span><br><span class="line">netstat -ap | grep ssh</span><br><span class="line">netstat -an | grep ':80'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查看路由表（网络层IP协议）：route</p>
+<ul>
+<li>查看路由信息<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 得到路由表信息，具体分析路由表工作需要网络知识</span><br><span class="line"><span class="meta">#</span> 可以通过netstat -r(route)得到同样的路由表</span><br><span class="line"></span><br><span class="line">route</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>检查网络连通性（网络层ICMP协议）：ping</p>
+<ul>
+<li>检查是否连通<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 主要功能是检测网络连通性</span><br><span class="line"><span class="meta">#</span> 可以额外得到网站的ip地址和连接最大/最小/平均耗时。</span><br><span class="line"></span><br><span class="line">ping baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>转发路径（网络层ICMP协议）：traceroute</p>
+<ul>
+<li>文件包途径的IP<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> </span><br><span class="line"><span class="meta">#</span> 可以打印从沿途经过的路由器IP地址</span><br><span class="line"></span><br><span class="line">traceroute baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>网络Debug分析（网络层/传输层）：nc</p>
+<ul>
+<li><p>端口扫描</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 黑客很喜欢</span><br><span class="line"><span class="meta">#</span> 扫描某服务器端口使用情况</span><br><span class="line"><span class="meta">#</span> -v(view)显示指令执行过程，-w(wait)设置超时时长</span><br><span class="line"><span class="meta">#</span> -z使用输入输出模式（只在端口扫描时使用）</span><br><span class="line"><span class="meta">#</span> 数字为扫描的端口范围 </span><br><span class="line"></span><br><span class="line">nc -v -w 1 baidu.com  -z 75-1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.oschina.net/translate/linux-netcat-command" target="_blank" rel="noopener">其他详见</a></p>
+</li>
+</ul>
+</li>
+<li><p>命令行抓包（网络层/传输层）：tcpdump</p>
+<ul>
+<li>抓包利器，没有什么比数据更值得信赖。可以跟踪整个传输过程。</li>
+<li><a href="http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>域名解析工具（应用层DNS协议）：dig</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 应用层，DNS</span><br><span class="line"><span class="meta">#</span> 打印域名解析结果</span><br><span class="line"><span class="meta">#</span> 打印域名解析过程中涉及的各级DNS服务器地址</span><br><span class="line"></span><br><span class="line">dig baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络请求（应用层）：curl</p>
+<ul>
+<li><a href="http://www.cnblogs.com/gbyukg/p/3326825.html" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a><span id="other">其他</span></h3><blockquote>
+<p>这里都是日常开发中高频命令。</p>
+</blockquote>
+<ol>
+<li><p>终止进程：kill</p>
+<ul>
+<li><p>杀死具体进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 加具体进程PID</span><br><span class="line"></span><br><span class="line">kill 12345</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>杀死某进程相关进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 加上"-9"杀死某进程相关进程</span><br><span class="line"></span><br><span class="line">kill -9 12345</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改文件权限：chmod</p>
+<ul>
+<li>更改文件权限<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以对三种使用者设置权限，u(user, owner)，g(group)，o(other)</span><br><span class="line"><span class="meta">#</span> 文件可以有三种权限，r(read)，w(write)，x(execute)</span><br><span class="line"><span class="meta">#</span> 这里u+r表示文件所有者在原有基础上增加文件读取权限</span><br><span class="line"><span class="meta">#</span> 这里777分别对应，u=7，g=7，o=7，具体数字含义自行google</span><br><span class="line"></span><br><span class="line">chmod u+r file</span><br><span class="line">chmod 777 file</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>创建链接：ln</p>
+<ul>
+<li><p>创建硬链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 文件inode中链接数会增加，只有链接数减为0时文件才真正被删除</span><br><span class="line"></span><br><span class="line">ln file1 file2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建软（符号链接）链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -s(symbol)为符号链接，仅仅是引用路径</span><br><span class="line"><span class="meta">#</span> 相比于硬链接最大特点是可以跨文件系统</span><br><span class="line"><span class="meta">#</span> 类似于Windows创建快捷方式，实际文件删除则链接失效</span><br><span class="line"></span><br><span class="line">ln -s file1 file2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>显示文件尾：tail</p>
+<ul>
+<li>查看文件尾部<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -f参数可以不立即回传结束信号，当文件有新写入数据时会及时更新</span><br><span class="line"><span class="meta">#</span> 查看日志时常用</span><br><span class="line"></span><br><span class="line">tail -f test</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>版本控制：git</p>
+<ul>
+<li>版本控制最好用的软件，没有之一。至少要知道”git init”，”git add”，”git commit”，”git pull”，”git push”几个命令。</li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="noopener">详见</a></li>
+</ul>
+</li>
+<li><p>设置别名：alias</p>
+<ul>
+<li>常用命令添加别名<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ".bashrc"文件中配置常用命令别名，生效后在命令行只需要使用别名即可代替原先很长的命令</span><br><span class="line"></span><br><span class="line">alias rm='rm -i'</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>假设已经通过vim编辑，gcc编译得到可执行文件server，这时就可以使用一些开发者常用的工具来进行后期调试。这里都是给出最简单的用法，意在快速掌握一些基本开发工具。</p>
+<p>先clone这个项目，然后使用src_code下代码编译通过后通过下面命令调试。<a href="https://github.com/linw7/TKeed" target="_blank" rel="noopener">代码</a></p>
+<ol>
+<li>单步调试：gdb</li>
+</ol>
+<ul>
+<li>运行得不到正确结果可以通过gdb设置断点来查看每个中间变量值，以此来确定哪里出了问题。因为gdb调试内容较多，这里不详细说明。另外，gdb出了可以单步查看变量值，还可以分析coredump文件来排查错误。</li>
+</ul>
+<ol start="2">
+<li>动态库依赖：ldd</li>
+</ol>
+<ul>
+<li><p>命令：ldd ./server</p>
+</li>
+<li><p>可以查看可执行文件server所需的所有动态库，动态库所在目录及其被映射到的虚拟地址空间。</p>
+</li>
+</ul>
+<ol start="3">
+<li>性能分析：top</li>
+</ol>
+<ul>
+<li>top可以查看当前系统很多信息，比如1,5,15分钟内负载，运行、休眠、僵尸进程数，用户、内核程序占CPU百分比，存储信息等。top可以定位具体哪个进程CPU占用率高和内存使用率高。我们可以以此定位性能问题出在什么程序上（比如你后台执行TKeed server之后，可以看到CPU占用率为99%，这时候我们就需要从这个程序入手了）。</li>
+</ul>
+<ol start="4">
+<li>系统调用：strace</li>
+</ol>
+<ul>
+<li><p>命令：strace ./server</p>
+</li>
+<li><p>上面已经提到TKeed server的CPU占用率为99%，那么问题通常一定是出在了死循环上。我们接下来在代码中找到死循环位置。因为程序中epoll_wait需要阻塞进程，我们怀疑是不是这里没有阻塞，这时就可以通过上面的方式运行server程序。此时可以打印出没次系统调用及其参数等，我们也可以加-o filename将系统调用信息保存下来。</p>
+</li>
+</ul>
+<ol start="5">
+<li>打印进程：ps</li>
+</ol>
+<ul>
+<li><p>命令：ps -ejH</p>
+</li>
+<li><p>我们在命令行下打开的程序的父进程是shell程序，之前用strace打开server程序，strace也是server的父进程。我们有时候需要知道进程间的层级关系就需要打印进程树，上面的ps命令可以做到。当出现僵尸进程时就可以通过进程树定位具体是哪个进程出了问题。另外当想要知道进程pid时，ps -el | grep XXX也是很常用的。</p>
+</li>
+</ul>
+<ol start="6">
+<li>打开文件：lsof</li>
+</ol>
+<ul>
+<li><p>lsof -i:3000</p>
+</li>
+<li><p>比如在运行server时发现端口被占用了，可以通过lsof -i:port来查看对应端口号正在被哪个进程所占用。端口占用是非常常见的问题，比如3306被占用我遇到过好几次，要么是某个程序正好占用了要么是之前没能结束进程，这些都可以借助lsof帮助查看端口。</p>
+</li>
+</ul>
+<ol start="7">
+<li>修改权限：chmod</li>
+</ol>
+<ul>
+<li><p>chmod 000 ./index.html</p>
+</li>
+<li><p>可以修改文件权限，这里设为000，这样任何人都无法访问，重新在浏览器请求127.0.0.1:3000/index.html就会因为文件权限不够而无法展示，服务器返回状态码为403，符合我们预期。修改权限后再请求一次可得到状态码200。</p>
+</li>
+</ul>
+<ol start="8">
+<li>网卡信息：ifconfig</li>
+</ol>
+<ul>
+<li><p>ifconfig</p>
+</li>
+<li><p>如果想看一下整个传输过程，可以使用tcpdump来抓包，但是抓包时参数需要加上网卡信息，这时候可以通过ifconfig来获得网卡信息。</p>
+</li>
+</ul>
+<ol start="9">
+<li>抓包分析：tcpdump</li>
+</ol>
+<ul>
+<li><p>tcpdump -i eth0 port 3000</p>
+</li>
+<li><p>可以用tcpdump来抓包分析三次握手及数据传输过程，-i之后加上上一步得到的网卡地址，port可以指定监听的端口号。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/30/图像处理知识点——-1/" rel="prev" title="图像处理知识点——(1)">
+                图像处理知识点——(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/graduate.png" alt="张旭">
+            
+              <p class="site-author-name" itemprop="name">张旭</p>
+              <p class="site-description motion-element" itemprop="description">学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/CV计算机视觉/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kaaier" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://15993096663@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Learning resources
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://morvanzhou.github.io/" title="ML&DL" target="_blank">ML&DL</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jiqizhixin.com/" title="机器之心" target="_blank">机器之心</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux工具"><span class="nav-number">1.</span> <span class="nav-text">Linux工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容"><span class="nav-number">3.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发及调试"><span class="nav-number">3.0.1.</span> <span class="nav-text">开发及调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件处理"><span class="nav-number">3.0.2.</span> <span class="nav-text">文件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统信息"><span class="nav-number">3.0.3.</span> <span class="nav-text">系统信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络工具"><span class="nav-number">3.0.4.</span> <span class="nav-text">网络工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">3.0.5.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">3.0.6.</span> <span class="nav-text">实战</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张旭</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
