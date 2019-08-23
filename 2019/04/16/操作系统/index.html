@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型    &amp;lt;!-- more --&amp;gt;内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解">
+<meta name="description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型   内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解不清晰。对于进程和线程的理解和把握可以说">
 <meta name="keywords" content="C++,Data Structures and Algorithms">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统知识点积累">
 <meta property="og:url" content="https://kaaier.github.io/2019/04/16/操作系统/index.html">
 <meta property="og:site_name" content="Kaiaier&#39;s    Blog">
-<meta property="og:description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型    &amp;lt;!-- more --&amp;gt;内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解">
+<meta property="og:description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型   内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解不清晰。对于进程和线程的理解和把握可以说">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T00:20:22.812Z">
+<meta property="og:updated_time" content="2019-08-23T01:46:00.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统知识点积累">
-<meta name="twitter:description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型    &amp;lt;!-- more --&amp;gt;内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解">
+<meta name="twitter:description" content="操作系统 面向进程和线程学习操作系统。  目录   Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5    进程线程模型 进程间通信 同步互斥机制 存储管理 网络I/O模型   内容进程线程模型线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解不清晰。对于进程和线程的理解和把握可以说">
 
 
 
@@ -418,8 +418,9 @@
 <td align="center"><a href="#netio">网络I/O模型</a></td>
 </tr>
 </tbody></table>
-<hr>
-<pre><code>&lt;!-- more --&gt;</code></pre><h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h3 id="进程线程模型"><a href="#进程线程模型" class="headerlink" title="进程线程模型"></a><span id="thread">进程线程模型</span></h3><p>线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解不清晰。对于进程和线程的理解和把握可以说基本奠定了对系统的认知和把控能力。其核心意义绝不仅仅是“线程是调度的基本单位，进程是资源分配的基本单位”这么简单。</p>
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h3 id="进程线程模型"><a href="#进程线程模型" class="headerlink" title="进程线程模型"></a><span id="thread">进程线程模型</span></h3><p>线程和进程的概念已经在操作系统书中被翻来覆去讲了很多遍。很多概念虽然都是套话，但没能理解透其中深意会导致很多内容理解不清晰。对于进程和线程的理解和把握可以说基本奠定了对系统的认知和把控能力。其核心意义绝不仅仅是“线程是调度的基本单位，进程是资源分配的基本单位”这么简单。</p>
+ <a id="more"></a>
+
 <p><strong>多线程</strong></p>
 <p>我们这里讨论的是用户态的多线程模型，同一个进程内部有多个线程，所有的线程共享同一个进程的内存空间，进程中定义的全局变量会被虽有的线程共享，比如有全局变量int i = 10，这一进程中所有并发运行的线程都可以读取和修改这个i的值，而多个线程被CPU调度的顺序又是不可控的，所以对临界资源的访问尤其需要注意安全。我们必须知道，做一次简单的i = i + 1在计算机中并不是原子操作，涉及内存取数，计算和写入内存几个环节，而线程的切换有可能发生在上述任何一个环节中间，所以不同的操作顺序很有可能带来意想不到的结果。</p>
 <p>但是，虽然线程在安全性方面会引入许多新挑战，但是线程带来的好处也是有目共睹的。首先，原先顺序执行的程序（暂时不考虑多进程）可以被拆分成几个独立的逻辑流，这些逻辑流可以独立完成一些任务（最好这些任务是不相关的）。比如QQ可以一个线程处理聊天一个线程处理上传文件，两个线程互不干涉，在用户看来是同步在执行两个任务，试想如果线性完成这个任务的话，在数据传输完成之前用户聊天被一直阻塞会是多么尴尬的情况。</p>
@@ -977,7 +978,7 @@ __uint64_t u64;</code></pre><p>  }epoll_data_t;</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/25/NMS/" rel="prev" title="Non-Maximum-Suppression">
+              <a href="/2019/04/25/NMS/" rel="prev" title="Non-Maximum-Suppression">
                 Non-Maximum-Suppression <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -1048,7 +1049,7 @@ __uint64_t u64;</code></pre><p>  }epoll_data_t;</p>
               <img class="site-author-image" itemprop="image" src="/images/graduate.png" alt="张旭">
             
               <p class="site-author-name" itemprop="name">张旭</p>
-              <p class="site-description motion-element" itemprop="description">学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 我爱小方方！</p>
+              <p class="site-description motion-element" itemprop="description">学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 方</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1058,7 +1059,7 @@ __uint64_t u64;</code></pre><p>  }epoll_data_t;</p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

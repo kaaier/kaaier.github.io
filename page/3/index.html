@@ -92,16 +92,16 @@
 
 
 
-<meta name="description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 我爱小方方！">
+<meta name="description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 方">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kaiaier&#39;s    Blog">
 <meta property="og:url" content="https://kaaier.github.io/page/3/index.html">
 <meta property="og:site_name" content="Kaiaier&#39;s    Blog">
-<meta property="og:description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 我爱小方方！">
+<meta property="og:description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 方">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaiaier&#39;s    Blog">
-<meta name="twitter:description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 我爱小方方！">
+<meta name="twitter:description" content="学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 方">
 
 
 
@@ -453,6 +453,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kaaier.github.io/2017/01/04/并查集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张旭">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/graduate.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kaiaier's    Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/04/并查集/" itemprop="url">并查集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T09:53:41+08:00">
+                2017-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h5><p>分布式系统  （比特币  map-reduce）<br>树形数据结构，用于处理一些不交集的合并和查询问题。<br>Find:判断元素是否属于集合/Union:将两个子集合并为一个集合。     不支持拆分</p>
+<p>并查集优化:<br>        1.合并:不成为链，组织结构扁平，深度越低，合并考虑深度，rank较低。<br>        2.路径优化:<br>       <img src="C:%5CUsers%5C15993%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1566391964652.png" alt="1566391964652"></p>
+<h4 id="1-number-of-islands-（合并）"><a href="#1-number-of-islands-（合并）" class="headerlink" title="1.number of islands  （合并）"></a>1.number of islands  （合并）</h4><p>地图中有多少个岛屿，‘0’，‘1’组成。</p>
+<p>思路1:遍历所有节点:if该节点=1，count++，将该点和附近=0 </p>
+<p>思路2:初始化1—-&gt;遍历所有节点，相邻节点合并   1合并0不管——&gt;遍历，Parent个数</p>
+<p>相邻岛归并集合，集合个数</p>
+<h4 id="2-friends-circle"><a href="#2-friends-circle" class="headerlink" title="2.friends -circle"></a>2.friends -circle</h4><p>图论，转变为岛屿</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+    <div>
+  
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kaaier.github.io/2017/01/03/动态规划系列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -660,7 +813,7 @@
               <img class="site-author-image" itemprop="image" src="/images/graduate.png" alt="张旭">
             
               <p class="site-author-name" itemprop="name">张旭</p>
-              <p class="site-description motion-element" itemprop="description">学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 我爱小方方！</p>
+              <p class="site-description motion-element" itemprop="description">学习总结 思考感悟 知识管理       Coding  研究领域:图像处理, 计算机视觉, 机器学习. 方</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -670,7 +823,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
